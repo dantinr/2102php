@@ -6,6 +6,7 @@
 
     $user_info = [];
     //判断字段不能为空
+    //echo '<pre>';print_r($_POST);echo '</pre>';die;
     foreach($_POST as $k=>$v){
         $input = trim($v);      //去空格
         if( empty($input) ){
@@ -14,7 +15,7 @@
         //用户信息保存在新数组中
         $user_info[$k] = $input;
     }
-    
+
     //验证用户名是否符合用户名规则   大小写英文字母 不少于6
     $patten = "/^[a-zA-Z]{6,}$/";
     if( !preg_match($patten,$user_info['u_name']) ){
