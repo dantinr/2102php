@@ -5,10 +5,14 @@
     <title>Test</title>
 </head>
 <body>
-  <h1>Hello World</h1>
-
-    <?php
-        echo "这是PHP代码";
-    ?>
+    <form action="user.php" method="post">
+        用户名： <input type="text" name="u_name" placeholder="请输入用户名"> <br>
+        Email: <input type="text" name="u_email"> <br>
+        手机号: <input type="text" name="u_mobile"> <br>
+        密码： <input type="password" name="u_pass1"> <br>
+        确认密码： <input type="password" name="u_pass2"> <br>
+        <input type="submit" value="提交">
+        <input type="reset" value="重置">
+    </form>
 </body>
 </html>
