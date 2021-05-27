@@ -14,11 +14,7 @@
         //用户信息保存在新数组中
         $user_info[$k] = $input;
     }
-
-    echo '<hr>';
-    echo '<pre>';print_r($user_info);echo '</pre>';
-
-
+    
     //验证用户名是否符合用户名规则   大小写英文字母 不少于6
     $patten = "/^[a-zA-Z]{6,}$/";
     if( !preg_match($patten,$user_info['u_name']) ){
