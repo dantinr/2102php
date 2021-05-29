@@ -10,6 +10,6 @@
         }
         return $str;
     }
-    
+
     var_dump(str_rand());
 
