@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    //未登录用户
+    if(!isset($_SESSION['user'])){
+        header('Refresh:2;url=login.html');
+        die("未登录，请先登录！");
+    }
+?>
 <!doctype html>
 <html>
 <head>
@@ -13,7 +21,6 @@
 <hr>
     <?php
         include "db.php";
-        session_start();
         echo $_SESSION['user']['username'] . "欢迎回来, ";
         echo "最后登录时间： ". date('Y-m-d H:i:s',$_SESSION['login_time']);
 
@@ -28,15 +35,18 @@
         <caption><h2>登录记录</h2></caption>
         <thead>
             <tr>
-                <th>登录时间</th><th>登录IP</th>
+                <th>ID</th><th>登录时间</th><th>登录IP</th><th>操作</th>
             </tr>
         </thead>
         <tbody>
         <?php
         foreach($rows as $k=>$v){
             echo "<tr>";
+            echo "<td> " . $v['id']  ." </td>";
             echo "<td> ". date('Y-m-d H:i:s',$v['login_time']) ." </td>";
             echo "<td> {$v['login_ip']} </td>";
+            echo "<td> <a href='delete_login.php?id={$v['id']}'>删除</a> </td>";
+
             echo "</tr>";
         }
         ?>
