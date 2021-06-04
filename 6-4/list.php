@@ -39,7 +39,8 @@
     echo "<ul>";
     foreach($rows as $k=>$v){
         echo "<li>";
-        echo  $v['goods_id'] . ' ' .$v['goods_name'];
+        echo "<a href='goods.php?id={$v['goods_id']}'>{$v['goods_name']}</a>";
+        echo "&nbsp;&nbsp;&nbsp;&nbsp;<a href='edit.php?id={$v['goods_id']}'>编辑商品信息</a>";
         echo "</li>";
     }
     echo "</ul>";
