@@ -17,19 +17,30 @@
         }
 
 
+
+
         public function showWeight()
         {
             echo "重量： ". $this->weight;
         }
 
 
+        //析构函数  对象销毁时自动调用
+        public function __desctruct()
+        {
+            echo "对象销毁了";
+        }
 
     }
 
     $cat1 = new Cat("大橘猫","Male","5kg");echo '</br>';
     $cat1->showWeight();
+    unset($cat1);echo '</br>';
     echo '<hr>';
     $cat2 = new Cat("小橘猫","Female","3kg");echo '</br>';
     $cat2->showWeight();
+
+
+
 
 
