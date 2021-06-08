@@ -8,20 +8,19 @@
     $dbh = new PDO("mysql:host={$host};dbname={$db}", $user, $pass);
 
     // select user_id,username from p_users where user_id=123
-    $sql = "select user_id,user_name from p_users where user_id= ?";        //预处理 ？占位
+    $sql = "select user_id,username from p_users where user_id= ?";        //预处理 ？占位
     echo $sql;echo '</br>';
     // 预处理
     $stmt = $dbh->prepare($sql);                //执行预处理
 
     //执行sql语句
     $id = $_GET['id'];
-    $res = $stmt->execute([$id]);               // 传参数
+    $res = $stmt->execute([$id]);               // 填充占位符
 
     //获取错误信息
-    echo '<hr>';
-    $err_code = $dbh->errorCode();              //获取错误码
+    $err_code = $stmt->errorCode();              //获取 statement 错误码
     var_dump($err_code);
-    $err_msg = $dbh->errorInfo();               //获取错误信息
+    $err_msg = $stmt->errorInfo();               //获取 statement 错误信息
     var_dump($err_msg);
 
     //获取查询结果
